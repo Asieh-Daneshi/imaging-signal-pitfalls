@@ -10,6 +10,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 02 | [Filter phase delay](02_filter_phase_delay) | The same 8 Hz Butterworth filter shifts a peak when applied causally (`lfilter`) but not zero-phase (`filtfilt`). | Peak at 300 ms moves to 359 ms with `lfilter` |
 | 03 | [Smoothing vs small structures](03_smoothing_small_structures) | Stronger Gaussian blur removes noise, and a 1-pixel-scale spot with it. | At sigma 4: 8 % noise left, 6 % of the spot left |
 | 04 | [Dataset shift with a CNN](04_dataset_shift_cnn) | A small PyTorch CNN is perfect on its own "site" and drops to chance on another, while AUC stays high. Per-image normalisation fixes most of it. | Site B accuracy 50 % (AUC 0.975), 96 % after normalisation |
+| 05 | [Screening and PPV](05_screening_ppv) | A classifier with 90 % sensitivity and 90 % specificity is mostly wrong when it flags someone in a low-prevalence population. The model stays the same; the population changes. | At 1 % prevalence, PPV 8.3 % (9 of 108 flags are real) |
 
 ## Run
 
