@@ -1,5 +1,7 @@
 # Imaging and signal pitfalls
 
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-5-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
 These are clean, reproducible versions of the demos behind a series of my LinkedIn posts. The exact numbers can differ a little from the posts because the parameters and random seeds differ, but the effects are the same. Each one is a problem I have run into in real research pipelines (EEG, retinal imaging, behavioural video).
