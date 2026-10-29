@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-6-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-7-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -14,6 +14,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 04 | [Dataset shift with a CNN](04_dataset_shift_cnn) | A small PyTorch CNN is perfect on its own "site" and drops to chance on another, while AUC stays high. Per-image normalisation fixes most of it. | Site B accuracy 50 % (AUC 0.975), 96 % after normalisation |
 | 05 | [Screening and PPV](05_screening_ppv) | A classifier with 90 % sensitivity and 90 % specificity is mostly wrong when it flags someone in a low-prevalence population. The model stays the same; the population changes. | At 1 % prevalence, PPV 8.3 % (9 of 108 flags are real) |
 | 06 | [Subject leakage](06_subject_leakage) | Splitting over slices instead of subjects lets a model recognise patients it has already seen, so test accuracy looks near perfect. | Random slice split 99.8 %, split by subject 50.9 % (chance) |
+| 07 | [Dice vs pixel accuracy](07_dice_vs_pixel_accuracy) | On a tiny lesion, pixel accuracy is dominated by background, so even an empty prediction scores like a good model. Dice tells them apart. | Empty prediction: 99.7 % accuracy, Dice 0.00; good one: 99.9 %, Dice 0.86 |
 
 ## Run
 
