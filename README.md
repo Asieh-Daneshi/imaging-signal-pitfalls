@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-11-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-12-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -19,6 +19,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 09 | [Feature selection before cross-validation](09_selection_leakage) | Picking the best features on all data and only then cross-validating inflates the score, even when the data are pure noise. | Pure noise (true accuracy 50 %): 90.2 % if selected on all data, 50.4 % if selected inside each fold |
 | 10 | [Aliasing when downsampling](10_aliasing) | Keeping every n-th sample without a low-pass filter folds fast components back into the band and creates a rhythm that was never there. | 40 Hz folds to a fake 10 Hz rhythm (amplitude 0.79) at 50 Hz; filtering first leaves only the real 5 Hz |
 | 11 | [Small test set intervals](11_small_test_set_ci) | One accuracy number from a few dozen test cases is a single draw from a wide distribution. An interval shows how much it can move. | True accuracy 80 %: with 50 test cases the reported value ranges from 68 % to 90 % (2.5 to 97.5 % of draws) |
+| 12 | [Class imbalance and PR curves](12_imbalance_pr) | ROC AUC stays the same when positives become rare, but precision collapses. The same model looks very different once prevalence is low. | Same model: ROC AUC about 0.92 throughout; average precision 0.922 at 50 % prevalence, 0.306 at 1 %, 0.062 at 0.1 % |
 
 ## Run
 
