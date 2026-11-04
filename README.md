@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-14-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-15-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -22,6 +22,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 12 | [Class imbalance and PR curves](12_imbalance_pr) | ROC AUC stays the same when positives become rare, but precision collapses. The same model looks very different once prevalence is low. | Same model: ROC AUC about 0.92 throughout; average precision 0.922 at 50 % prevalence, 0.306 at 1 %, 0.062 at 0.1 % |
 | 13 | [Threshold chosen on the test set](13_threshold_on_test) | Choosing the decision threshold that maximises accuracy on the test set uses the test set for fitting. With 100 test cases and no signal at all, it reports well above chance. | No signal (true accuracy 50 %): 55.8 % reported if the threshold is picked on the test set, 50.1 % if picked on a separate validation set |
 | 14 | [Dice vs object size](14_dice_vs_object_size) | The same 1-pixel boundary error gives a very different Dice score depending on object size. | 1 px too wide: Dice 0.97 at radius 40, 0.77 at radius 5, 0.64 at radius 3 |
+| 15 | [Label noise in the test set](15_label_noise) | Wrong reference labels in the test set pull every reported accuracy towards chance and shrink the gap between models, so a real improvement becomes harder to see. | Noise 0 to 0.3: A-B gap 0.025 to 0.010; chance that the better model is reported better 0.938 to 0.711 |
 
 ## Run
 
