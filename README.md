@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-16-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-17-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -24,6 +24,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 14 | [Dice vs object size](14_dice_vs_object_size) | The same 1-pixel boundary error gives a very different Dice score depending on object size. | 1 px too wide: Dice 0.97 at radius 40, 0.77 at radius 5, 0.64 at radius 3 |
 | 15 | [Label noise in the test set](15_label_noise) | Wrong reference labels in the test set pull every reported accuracy towards chance and shrink the gap between models, so a real improvement becomes harder to see. | Noise 0 to 0.3: A-B gap 0.025 to 0.010; chance that the better model is reported better 0.938 to 0.711 |
 | 16 | [Augmentation that changes the label](16_flip_label) | A horizontal flip looks harmless, but if the label is left or right, it swaps the class while the label stays the same. A vertical flip does not. | Training images flipped (label unchanged): 0 % gives 90.2 % accuracy, 50 % gives 50.9 % with horizontal flips and 90.1 % with vertical flips |
+| 17 | [Resolution change at test time](17_resolution_shift) | A model trained at one pixel size fails when test images are resampled, if the label lives at a particular spatial scale. Scale augmentation does not help when scale defines the class. | Trained at zoom 1.0: accuracy 1.000, 0.543 at zoom 1.25, 0.500 (chance) at zoom 0.6 and 1.6; scale augmentation gives 0.642 at zoom 1.25 |
 
 ## Run
 
