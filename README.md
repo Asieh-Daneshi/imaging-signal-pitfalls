@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-18-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-19-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -26,6 +26,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 16 | [Augmentation that changes the label](16_flip_label) | A horizontal flip looks harmless, but if the label is left or right, it swaps the class while the label stays the same. A vertical flip does not. | Training images flipped (label unchanged): 0 % gives 90.2 % accuracy, 50 % gives 50.9 % with horizontal flips and 90.1 % with vertical flips |
 | 17 | [Resolution change at test time](17_resolution_shift) | A model trained at one pixel size fails when test images are resampled, if the label lives at a particular spatial scale. Scale augmentation does not help when scale defines the class. | Trained at zoom 1.0: accuracy 1.000, 0.543 at zoom 1.25, 0.500 (chance) at zoom 0.6 and 1.6; scale augmentation gives 0.642 at zoom 1.25 |
 | 18 | [Seed variance in a small network](18_seed_variance) | The same data and the same model give different test accuracies for different random seeds. Choosing the best seed on the test set adds an optimistic bias. | 30 seeds: mean 0.842, std 0.019, range 0.795 to 0.875; best seed on the test set 0.875, seed chosen on validation 0.860 |
+| 19 | [Normalisation fitted on the test data](19_norm_leakage) | Standardising test features with test-set statistics changes the pipeline: it needs a whole batch at prediction time and can hide a shift between training and test data. | Same model and test set: accuracy 0.558 with training statistics, 0.796 with whole-test-set statistics, 0.743 with batches of 5 |
 
 ## Run
 
