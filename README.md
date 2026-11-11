@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-20-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-21-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -28,7 +28,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 18 | [Seed variance in a small network](18_seed_variance) | The same data and the same model give different test accuracies for different random seeds. Choosing the best seed on the test set adds an optimistic bias. | 30 seeds: mean 0.842, std 0.019, range 0.795 to 0.875; best seed on the test set 0.875, seed chosen on validation 0.860 |
 | 19 | [Normalisation fitted on the test data](19_norm_leakage) | Standardising test features with test-set statistics changes the pipeline: it needs a whole batch at prediction time and can hide a shift between training and test data. | Same model and test set: accuracy 0.558 with training statistics, 0.796 with whole-test-set statistics, 0.743 with batches of 5 |
 | 20 | [Overlapping windows split at random](20_window_leakage) | Cutting one recording into overlapping windows and splitting them at random puts near-identical neighbours in train and test, so a model with no real signal scores above chance. | No signal (true accuracy 50 %): random split 0.589 at 0 % overlap and 0.632 at 90 %, blocked split 0.510 and 0.520 |
-
+| 21 | [Shortcut learning from a corner tag](21_shortcut_marker) | A mark that matches the label in the training data (scanner tag, annotation) can be used instead of the real finding. The test set looks great until the mark stops matching. | Tag matches class in 95 % of training images: accuracy 0.934 on the same kind of test set, 0.603 with the tag unrelated, 0.282 with it reversed; trained without the shortcut 0.773 |
 ## Run
 
 ```bash
