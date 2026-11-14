@@ -1,6 +1,6 @@
 # Imaging and signal pitfalls
 
-![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-22-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white) ![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?logo=pytorch&logoColor=white) ![Data](https://img.shields.io/badge/data-synthetic%20only-lightgrey) ![Experiments](https://img.shields.io/badge/experiments-23-2ea44f) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 
 Small, self-contained experiments on things that quietly go wrong when you process biomedical images and signals. Each one runs in a few seconds on a laptop and uses synthetic data only, so nothing here is clinical or patient data.
 
@@ -30,6 +30,7 @@ These are clean, reproducible versions of the demos behind a series of my Linked
 | 20 | [Overlapping windows split at random](20_window_leakage) | Cutting one recording into overlapping windows and splitting them at random puts near-identical neighbours in train and test, so a model with no real signal scores above chance. | No signal (true accuracy 50 %): random split 0.589 at 0 % overlap and 0.632 at 90 %, blocked split 0.510 and 0.520 |
 | 21 | [Shortcut learning from a corner tag](21_shortcut_marker) | A mark that matches the label in the training data (scanner tag, annotation) can be used instead of the real finding. The test set looks great until the mark stops matching. | Tag matches class in 95 % of training images: accuracy 0.934 on the same kind of test set, 0.603 with the tag unrelated, 0.282 with it reversed; trained without the shortcut 0.773 |
 | 22 | [ICA on rank-deficient EEG](22_ica_rank) | After re-referencing to the average, EEG channels sum to zero and have one fewer independent signal than channels. Asking ICA for as many components as channels blurs the artifact component. | 8 channels, 60 s: relative error 1.079 with 8 components, 0.435 with 7 (= rank); blink component correlation with true blink 0.869 on average (worst 0.390) vs 0.997 (worst 0.981) |
+| 23 | [Spurious correlation between slow signals](23_spurious_correlation) | Two independent signals that change slowly are often reported as significantly correlated, because neighbouring samples are not independent. Differencing removes the effect. | 2000 independent pairs, p < 0.05: 4.8 % flagged for white noise, 66.9 % for AR(1) (phi 0.95), 89.4 % for random walks, 4.3 % for differenced random walks |
 
 ## Run
 
